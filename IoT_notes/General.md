@@ -18,6 +18,19 @@ Hardware parts:
 ### To Do:
 
 - [ ] Suresh sir website
+	- [x] Overview
+	- [x] Arduino IDE
+	- [x] ESP-IDF
+	- [x] Arduino vs ESP-IDF
+	- [x] Code explained
+	- [x] ESP-IDF tut ->> didnt rlly do properly
+	- [x] IoT networking??
+	- [x] Networking ws
+	- [ ] Polling vs Interrupt
+	- [ ] MQTT & topics
+	- [ ] OTA Updates
+	- [x] IoT security
+	- [x] Case Studies
 - [x] Kavitha ma'am slides
 	- [x] Intro slides
 	- [x] Natural sensors
@@ -26,6 +39,23 @@ Hardware parts:
 	- [x] types of sensors
 	- [x] Actuators
 - [ ] Suresh sir notes
+	- [x] 1
+	- [x] 2
+	- [x] 3
+	- [x] 4
+	- [x] 5
+	- [x] 6
+	- [x] 7
+	- [x] 8
+	- [x] 9
+	- [ ] 10 //example of using rest api
+	- [ ] 11 //low priority
+	- [ ] 12
+	- [ ] 13
+	- [ ] 14
+	- [x] 15
+	- [ ] 16
+	- [ ] 17
 - [ ] PYQs
 - [ ] Generated qns
 
@@ -36,3 +66,5 @@ Hardware parts:
 - Remember spectrum(I didn't do this)
 - Read last few paras in hardware doc
 - What is docker and qemu?
+- How to write a design document?
+- Read chapter 12, why is Rest API better than RPC
