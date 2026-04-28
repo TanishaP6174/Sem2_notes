@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "General.md",
+                "file": "Software_website.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "General"
+              "title": "Software_website"
             }
           }
         ]
@@ -186,18 +186,23 @@
   },
   "active": "7cabfe09a846d4fe",
   "lastOpenFiles": [
+    "Pasted image 20260428085525.png",
+    "Pasted image 20260428085503.png",
+    "Pasted image 20260428085454.png",
+    "Pasted image 20260428084903.png",
+    "Pasted image 20260428084815.png",
+    "Pasted image 20260428084805.png",
+    "Pasted image 20260428084740.png",
+    "Pasted image 20260428084659.png",
+    "Pasted image 20260428084642.png",
+    "Pasted image 20260428084612.png",
+    "Pasted image 20260428084550.png",
+    "General.md",
     "Software_website.md",
     "Software_notes.md",
-    "General.md",
     "Software_slides.md",
     "Hardware.md",
-    "Pasted image 20260428025554.png",
-    "Pasted image 20260428012046.png",
-    "Pasted image 20260427230050.png",
     "Motivation.md",
-    "Pasted image 20260427232346.png",
-    "Pasted image 20260427232325.png",
-    "Pasted image 20260427232227.png",
     "Welcome.md"
   ]
 }
