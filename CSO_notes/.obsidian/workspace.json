@@ -1,68 +1,39 @@
 {
   "main": {
-    "id": "97ea12fb2ae73173",
+    "id": "65231d9904f3e0f0",
     "type": "split",
     "children": [
       {
-        "id": "d95b4071684d1c93",
+        "id": "5c9fb8f4cacd6eb3",
         "type": "tabs",
         "children": [
           {
-            "id": "7cabfe09a846d4fe",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Software_notes.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Software_notes"
-            }
-          },
-          {
-            "id": "c22e6b3768f38f9e",
+            "id": "0aa902e57355fd86",
             "type": "leaf",
             "state": {
               "type": "image",
               "state": {
-                "file": "images/Pasted image 20260428102033.png"
+                "file": "images/Pasted image 20260424102926.png"
               },
               "icon": "lucide-image",
-              "title": "Pasted image 20260428102033"
-            }
-          },
-          {
-            "id": "ab26f0281c66d97d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "General.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "General"
+              "title": "Pasted image 20260424102926"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "bd9816c9905af913",
+    "id": "ef88e71873fb40c4",
     "type": "split",
     "children": [
       {
-        "id": "88c60fa80db1260a",
+        "id": "06e6be74cf170c5d",
         "type": "tabs",
         "children": [
           {
-            "id": "b25387c70159933c",
+            "id": "365de6f9c2b1bb7e",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -75,7 +46,7 @@
             }
           },
           {
-            "id": "88955aa4276641ba",
+            "id": "f19bfa85cce9f5ef",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -92,7 +63,7 @@
             }
           },
           {
-            "id": "b09fe4ed9b0c6a10",
+            "id": "3745426a2a3d4435",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -108,21 +79,21 @@
     "width": 300
   },
   "right": {
-    "id": "13d244754890d5a3",
+    "id": "6861714981675deb",
     "type": "split",
     "children": [
       {
-        "id": "f099254dfb654507",
+        "id": "ef25b0228d9cc6ed",
         "type": "tabs",
         "children": [
           {
-            "id": "372202cdea1d31c9",
+            "id": "36f621f44ecc2912",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "General.md",
-                "collapseAll": false,
+                "file": "images/Pasted image 20260424102926.png",
+                "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
@@ -131,25 +102,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for General"
+              "title": "Backlinks for Pasted image 20260424102926"
             }
           },
           {
-            "id": "36060dbe65236228",
+            "id": "5cd3592e522437f1",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "General.md",
+                "file": "CSO endlab prac.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from General"
+              "title": "Outgoing links from CSO endlab prac"
             }
           },
           {
-            "id": "6b30f518fd747ffb",
+            "id": "853a2767761994f9",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -164,7 +135,7 @@
             }
           },
           {
-            "id": "f4951ed0623f19d5",
+            "id": "3eb0558004494a22",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -178,26 +149,25 @@
             }
           },
           {
-            "id": "e1811d404e151471",
+            "id": "d61fd9f3313c5ab2",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "General.md",
+                "file": "CSO endlab prac.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of General"
+              "title": "Outline of CSO endlab prac"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -210,25 +180,16 @@
       "bases:Create new base": false
     }
   },
-  "active": "b25387c70159933c",
+  "active": "365de6f9c2b1bb7e",
   "lastOpenFiles": [
-    "images/Pasted image 20260428123207.png",
-    "Hardware.md",
-    "Software_website.md",
-    "General.md",
-    "Software_notes.md",
-    "images/Pasted image 20260428122936.png",
-    "images/Pasted image 20260428122700.png",
-    "images/Pasted image 20260428122156.png",
-    "images/Pasted image 20260428121642.png",
-    "images/Pasted image 20260428115939.png",
-    "images/Pasted image 20260428110335.png",
-    "images/Pasted image 20260428102650.png",
-    "images/Pasted image 20260428102033.png",
-    "images/Pasted image 20260428101749.png",
+    "CSO endlab prac.md",
     "images",
-    "Software_slides.md",
-    "Motivation.md",
+    "Untitled.base",
+    "images/Pasted image 20260425081338.png",
+    "CSO endlab_info.md",
+    "images/Pasted image 20260424103006.png",
+    "images/Pasted image 20260424102926.png",
+    "create a link.md",
     "Welcome.md"
   ]
 }

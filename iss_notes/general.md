@@ -1,0 +1,22 @@
+
+To do:
+- [x] Bash
+- [x] Rgex
+- [x] Awk,sed, grep
+- [x] Python
+- [x] List comprehensions stuff
+- [x] Lambda functions
+- [x] MySQL
+- [x] Theory related to datatbases
+- [x] ACID
+- [x] Software engineering practices
+- [x] HTML
+- [x] CSS
+- [x] JS
+- [x] Event loop
+- [x] var vs let vs const
+- [x] Hoisting
+- [x] Numpy
+- [x] Python OOP
+- [x] JS var
+- [x] TRY, except error names

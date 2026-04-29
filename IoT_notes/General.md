@@ -17,7 +17,7 @@ Hardware parts:
 
 ### To Do:
 
-- [ ] Suresh sir website
+- [x] Suresh sir website
 	- [x] Overview
 	- [x] Arduino IDE
 	- [x] ESP-IDF
@@ -26,9 +26,9 @@ Hardware parts:
 	- [x] ESP-IDF tut ->> didnt rlly do properly
 	- [x] IoT networking??
 	- [x] Networking ws
-	- [ ] Polling vs Interrupt
-	- [ ] MQTT & topics
-	- [ ] OTA Updates
+	- [x] Polling vs Interrupt
+	- [x] MQTT & topics
+	- [x] OTA Updates
 	- [x] IoT security
 	- [x] Case Studies
 - [x] Kavitha ma'am slides
