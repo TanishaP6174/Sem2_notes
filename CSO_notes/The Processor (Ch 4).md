@@ -536,4 +536,158 @@ But question says:
 
 
 
--  
+# PIPELINED CONTROL
+
+- PC, pipelined registers is written on each clock cycle - so no separate write signals for them
+
+Because each control line is associated with a component active in only a single pipeline stage, we can divide the control lines into five groups according to the pipeline stage. 
+1. Instruction fetch: 
+	- The control signals to read instruction memory and to write the PC are always asserted, so there is nothing special to control in this pipeline stage. 
+2. Instruction decode/register file read
+	  - The two source registers are always in the same location in the RISC-V instruction formats, so there is nothing special to control in this pipeline stage. 
+3. Execution/address calculation: 
+	- The signals to be set are ALUOp and ALUSrc. 
+	- The signals select the ALU operation and either Read data 2 or a sign-extended immediate as inputs to the ALU. 
+4. Memory access: 
+	- The control lines set in this stage are Branch, MemRead, and MemWrite. 
+	- The branch if equal, load, and store instructions set these signals, respectively. 
+	- Recall that PCSrc selects the next sequential address unless control asserts Branch and the ALU result was 0. 
+5. Write-back: 
+	-  The two control lines are MemtoReg, which decides between sending the ALU result or the memory data to the register file, and RegWrite, which writes the chosen value.
+
+- The simplest way to pass these control signals is to extend the pipeline registers to include control information.
+- Control signals also stored in pipeline registers and move forward.
+![[Pasted image 20260430222951.png]]
+
+# DATA HAZARDS: FORWARDING VS STALLING
+
+
+- A notation that names the fields of the pipeline registers allows for a more precise notation of dependencies. For example, “ID/EX.RegisterRs1” refers to the number of one register whose value is found in the pipeline register ID/EX; that is, the one from the first read port of the register file.
+- In a clock cycle, write operations happen in the first half while read operations happen in the second half, so same cycle also → read gets updated value.
+- Solution:
+	- When forwarding dont wait till write back, as soon as data is available(after the ex stage), forward it.
+- Notation for hazard conditions:
+	- sub x2, x1, x3
+	- and x12, x2, x5
+
+	- Notation:
+		- ID/EX.Register1, ID/EX.Register2 (Current inst n register that needs data)
+		- MEM/WB.RegisterRd, EX/MEM.RegisterRd (Prev inst tht has the data)
+		- The below are hazard conditions:
+		- EX/MEM.RegisterRd =ID/EX.RegisterRs1 (Rs1 needs value in Rd),EX/MEM.RegisterRd ≠0
+		- EX/MEM.RegisterRd =ID/EX.RegisterRs2, EX/MEM.RegisterRd ≠0
+		- MEM/WB.RegisterRd =ID/EX.RegisterRs1, MEM/WB.RegisterRd ≠0
+		- MEM/WB.RegisterRd =ID/EX.RegisterRs2, MEM/WB.RegisterRd ≠0
+		- Before we classify this as a hazard, we need to check:
+		- RegWrite signal = 1
+
+- One case where forwarding cannot save the day is when an instruction tries to read a register following a load instruction that writes the same register.
+- Something must stall the pipeline for the combination of load followed by an instruction that reads its result.
+- in addition to a forwarding unit, we need a hazard detection unit.
+- Nops - An instruction that does no operation to change state
+
+# Data Hazards, Forwarding & Stalls in Pipelined Processors
+
+## The Core Problem
+
+In a pipeline, instructions overlap. If instruction 2 needs a result that instruction 1 hasn't finished computing yet, you have a **data hazard**.
+
+---
+
+## Solution 1: Forwarding (Bypassing)
+
+Instead of waiting for a result to be written back to the register file, you **grab it directly from the pipeline register** where it already exists.
+
+### The Forwarding Unit checks two hazard cases:
+
+**EX Hazard** — result is needed from the _previous_ instruction:
+
+```
+if (EX/MEM.RegWrite
+    and EX/MEM.RegisterRd ≠ 0
+    and EX/MEM.RegisterRd = ID/EX.RegisterRs1)  → ForwardA = 10
+```
+
+This steers the ALU mux to take its input from the EX/MEM pipeline register instead of the register file.
+
+**MEM Hazard** — result is needed from _two instructions back_:
+
+```
+if (MEM/WB.RegWrite
+    and MEM/WB.RegisterRd ≠ 0
+    and MEM/WB.RegisterRd = ID/EX.RegisterRs1)  → ForwardA = 01
+```
+
+### The Forwarding Mux Control Table
+
+| ForwardA/B | Source | Meaning                                 |
+| ---------- | ------ | --------------------------------------- |
+| 00         | ID/EX  | Normal — use register file              |
+| 10         | EX/MEM | Forward from prior ALU result           |
+| 01         | MEM/WB | Forward from data memory or earlier ALU |
+|            |        |                                         |
+![[Pasted image 20260430234238.png|599]]
+### Double Hazard Priority
+
+When both EX and MEM hazards occur simultaneously (e.g., `add x1, x1, x2` repeated), the **EX hazard takes priority** because it has the most recent value.
+
+---
+
+## Solution 2: Stalling (for Load-Use Hazards)
+
+Forwarding can't always save you. The classic case where it **fails**:
+
+```
+ld  x2, 20(x1)      ← loads from memory
+and x4, x2, x5     ← immediately needs x2
+```
+
+The load result isn't available until the **end of the MEM stage**, but the next instruction needs it at the **start of the EX stage** — that's one cycle too early. No amount of forwarding can go backward in time.
+
+### The Hazard Detection Unit
+
+Operates in the **ID stage** and checks:
+
+```
+if (ID/EX.MemRead
+    and ((ID/EX.RegisterRd = IF/ID.RegisterRs1)
+      or (ID/EX.RegisterRd = IF/ID.RegisterRs2)))
+    → stall the pipeline
+```
+
+### What a Stall Does
+
+1. **Freezes** the PC and IF/ID register (re-reads same instructions)
+2. **Inserts a bubble (nop)** — sets all control signals in ID/EX to 0
+3. After one cycle, forwarding handles the rest
+
+> Only **RegWrite** and **MemWrite** strictly need to be 0; other control signals are don't-cares.
+
+---
+
+## Key Insight: Why Only Load Needs Stalling
+
+|Instruction type|Hazard fixable by forwarding?|
+|---|---|
+|ALU (add, sub, and…)|✅ Yes — result ready after EX stage|
+|Load (ld)|❌ No — result only ready after MEM stage|
+
+---
+
+## Quick Mental Model
+
+Think of a **bubble in a water pipe** — a stall pushes everything behind it back one cycle and sends a "do nothing" nop forward. Once the bubble passes, execution resumes normally with forwarding handling any remaining dependencies.
+
+---
+
+## Exam Tips
+
+- Forwarding unit lives in the **EX stage**; hazard detection unit in the **ID stage**
+- Register 0 is never forwarded (it's always 0)
+- A stall = freeze PC + freeze IF/ID + insert nop into ID/EX
+- The compiler can also help by reordering instructions to avoid load-use hazards entirely
+
+![[Pasted image 20260430234346.png]]
+
+# 4.8 Control Hazards
+
